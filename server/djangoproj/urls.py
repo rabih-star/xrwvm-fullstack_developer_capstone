@@ -31,16 +31,22 @@ urlpatterns = [
     path("login/", TemplateView.as_view(template_name="index.html")),
     path("register/", TemplateView.as_view(template_name="index.html")),
     path("dealers/", TemplateView.as_view(template_name="index.html")),
-    path("dealer/<int:dealer_id>", TemplateView.as_view(template_name="index.html")),
+    path(
+        "dealer/<int:dealer_id>",
+        TemplateView.as_view(template_name="index.html"),
+    ),
     path(
         "manifest.json",
         serve,
         {
             "path": "manifest.json",
-            "document_root": os.path.join(settings.BASE_DIR, "frontend/static"),
+            "document_root": os.path.join(
+                settings.BASE_DIR, "frontend/static"
+            ),
         },
     ),
     path(
-        "postreview/<int:dealer_id>", TemplateView.as_view(template_name="index.html")
+        "postreview/<int:dealer_id>",
+        TemplateView.as_view(template_name="index.html"),
     ),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
